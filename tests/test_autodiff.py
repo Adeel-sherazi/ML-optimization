@@ -7,7 +7,10 @@ import numpy as np
 import sys
 import os
 
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+# Add parent directory to path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '01-math-fundamentals')))
+from autodiff.autograd import Tensor
 
 
 class TestAutodiff:
@@ -15,7 +18,6 @@ class TestAutodiff:
     
     def test_simple_gradient(self):
         """Test simple gradient computation."""
-        from ..['01-math-fundamentals'].autodiff.autograd import Tensor
         
         x = Tensor([3.0], requires_grad=True)
         y = x ** 2
@@ -26,8 +28,6 @@ class TestAutodiff:
     
     def test_addition_gradient(self):
         """Test addition gradient."""
-        from ..['01-math-fundamentals'].autodiff.autograd import Tensor
-        
         x = Tensor([2.0], requires_grad=True)
         y = Tensor([3.0], requires_grad=True)
         z = x + y
@@ -38,8 +38,6 @@ class TestAutodiff:
     
     def test_multiplication_gradient(self):
         """Test multiplication gradient."""
-        from ..['01-math-fundamentals'].autodiff.autograd import Tensor
-        
         x = Tensor([2.0], requires_grad=True)
         y = Tensor([3.0], requires_grad=True)
         z = x * y
@@ -51,8 +49,6 @@ class TestAutodiff:
     
     def test_chain_rule(self):
         """Test chain rule."""
-        from ..['01-math-fundamentals'].autodiff.autograd import Tensor
-        
         x = Tensor([1.0], requires_grad=True)
         y = (x + Tensor([2.0])) * Tensor([3.0])
         y.backward()

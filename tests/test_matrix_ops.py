@@ -8,9 +8,11 @@ import sys
 import os
 
 # Add parent directory to path
-sys.path.insert(0, os.path.join(os.path.dirname(__file__), '..'))
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 
-from ..['01-math-fundamentals'].matrix_ops.gemm import MatrixOps
+# Import from absolute path
+sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '01-math-fundamentals')))
+from matrix_ops.gemm import MatrixOps
 
 
 class TestMatrixOps:

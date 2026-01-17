@@ -44,6 +44,9 @@ def main():
     print("\n3. Testing Model Compression...")
     try:
         import torch.nn as nn
+        # Add model compression directory to path
+        compression_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), '02-model-compression')
+        sys.path.insert(0, compression_path)
         from quantization.int8_quantization import QuantizationHelper
         
         model = nn.Sequential(

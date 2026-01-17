@@ -4,6 +4,7 @@ Production-ready INT8 quantization for PyTorch models.
 Demonstrates post-training quantization and quantization-aware training.
 """
 
+import os
 import torch
 import torch.nn as nn
 import torch.quantization as quant
@@ -230,8 +231,6 @@ def demonstrate_quantization():
     print("3. Use QAT when accuracy drop is significant")
     print("4. Always validate accuracy after quantization")
 
-
-import os
 
 if __name__ == "__main__":
     demonstrate_quantization()
