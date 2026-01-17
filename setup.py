@@ -43,9 +43,12 @@ setup(
             "isort>=5.12.0",
             "flake8>=6.1.0",
         ],
-        "tensorrt": [
-            # "tensorrt>=8.6.0",
-            # "pycuda>=2022.2",
-        ],
+        # TensorRT support (NVIDIA GPUs only)
+        # Uncomment and install manually:
+        # pip install tensorrt pycuda
+        # "tensorrt": [
+        #     "tensorrt>=8.6.0",
+        #     "pycuda>=2022.2",
+        # ],
     },
 )

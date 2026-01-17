@@ -289,15 +289,16 @@ def save_cuda_kernel_templates():
     """Save CUDA kernel templates to files."""
     import os
     
-    kernels_dir = "/home/runner/work/ML-optimization/ML-optimization/03-cuda-kernels/basics"
+    # Get the directory of the current script
+    kernels_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")
     os.makedirs(kernels_dir, exist_ok=True)
     
     # Save vector add kernel
-    with open(f"{kernels_dir}/vector_add.cu", "w") as f:
+    with open(os.path.join(kernels_dir, "vector_add.cu"), "w") as f:
         f.write(VECTOR_ADD_KERNEL)
     
     # Save matrix multiply kernel
-    with open(f"{kernels_dir}/matmul.cu", "w") as f:
+    with open(os.path.join(kernels_dir, "matmul.cu"), "w") as f:
         f.write(MATRIX_MUL_KERNEL)
     
     print(f"\nCUDA kernel templates saved to {kernels_dir}/")

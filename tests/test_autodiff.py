@@ -7,9 +7,10 @@ import numpy as np
 import sys
 import os
 
-# Add parent directory to path
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '01-math-fundamentals')))
+# Add module to path for testing
+module_path = os.path.abspath(os.path.join(os.path.dirname(__file__), '..', '01-math-fundamentals'))
+sys.path.insert(0, module_path)
+
 from autodiff.autograd import Tensor
 
 

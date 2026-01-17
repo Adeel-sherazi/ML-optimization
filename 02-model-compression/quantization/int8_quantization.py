@@ -140,9 +140,13 @@ class QuantizationHelper:
         Returns:
             Model size in megabytes
         """
-        torch.save(model.state_dict(), "/tmp/temp_model.pth")
-        size_mb = os.path.getsize("/tmp/temp_model.pth") / (1024 * 1024)
-        os.remove("/tmp/temp_model.pth")
+        import tempfile
+        
+        with tempfile.NamedTemporaryFile(delete=True, suffix='.pth') as tmp_file:
+            torch.save(model.state_dict(), tmp_file.name)
+            tmp_file.seek(0, 2)  # Seek to end
+            size_mb = tmp_file.tell() / (1024 * 1024)
+        
         return size_mb
     
     @staticmethod
