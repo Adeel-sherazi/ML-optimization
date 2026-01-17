@@ -5,6 +5,7 @@ Demonstrates post-training quantization and quantization-aware training.
 """
 
 import os
+import tempfile
 import torch
 import torch.nn as nn
 import torch.quantization as quant
@@ -140,8 +141,6 @@ class QuantizationHelper:
         Returns:
             Model size in megabytes
         """
-        import tempfile
-        
         with tempfile.NamedTemporaryFile(delete=True, suffix='.pth') as tmp_file:
             torch.save(model.state_dict(), tmp_file.name)
             tmp_file.seek(0, 2)  # Seek to end

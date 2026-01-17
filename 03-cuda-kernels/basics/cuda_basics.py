@@ -290,8 +290,7 @@ def save_cuda_kernel_templates():
     import os
     
     # Get the directory of the current script
-    kernels_dir = os.path.join(os.path.dirname(os.path.abspath(__file__)), ".")
-    os.makedirs(kernels_dir, exist_ok=True)
+    kernels_dir = os.path.dirname(os.path.abspath(__file__))
     
     # Save vector add kernel
     with open(os.path.join(kernels_dir, "vector_add.cu"), "w") as f:

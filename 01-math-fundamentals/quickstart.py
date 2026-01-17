@@ -6,11 +6,14 @@ Quick start example demonstrating all ML optimization techniques.
 import torch
 import numpy as np
 
+# Constants
+SEPARATOR_WIDTH = 70
+
 
 def main():
-    print("=" * 70)
+    print("=" * SEPARATOR_WIDTH)
     print("ML Optimization Quick Start")
-    print("=" * 70)
+    print("=" * SEPARATOR_WIDTH)
     
     # 1. Math Fundamentals
     print("\n1. Testing Matrix Operations...")
@@ -95,14 +98,14 @@ def main():
         print(f"   ✗ Error: {e}")
     
     # Summary
-    print("\n" + "=" * 70)
+    print("\n" + "=" * SEPARATOR_WIDTH)
     print("Quick Start Complete!")
     print("\nNext Steps:")
     print("1. Explore individual modules in each directory")
     print("2. Run examples: python 01-math-fundamentals/matrix_ops/gemm.py")
     print("3. Check documentation in docs/")
     print("4. Run tests: pytest tests/")
-    print("=" * 70)
+    print("=" * SEPARATOR_WIDTH)
 
 
 if __name__ == "__main__":

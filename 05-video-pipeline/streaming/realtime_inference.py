@@ -156,10 +156,17 @@ class VideoPipeline:
         Returns:
             Dictionary of statistics
         """
-        avg_inference_time = (
-            self.total_inference_time / (self.frame_count / self.batch_size)
-            if self.frame_count > 0 else 0
-        )
+        # Avoid division by zero
+        if self.frame_count == 0:
+            return {
+                'frames_processed': 0,
+                'avg_batch_time_ms': 0.0,
+                'fps': 0.0,
+                'batch_size': self.batch_size
+            }
+        
+        num_batches = max(1, self.frame_count // self.batch_size)
+        avg_inference_time = self.total_inference_time / num_batches if num_batches > 0 else 0
         fps = self.batch_size / avg_inference_time if avg_inference_time > 0 else 0
         
         return {

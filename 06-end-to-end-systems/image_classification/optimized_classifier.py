@@ -4,6 +4,8 @@ End-to-end optimized image classification system.
 Production-ready deployment with all optimizations applied.
 """
 
+import os
+import tempfile
 import torch
 import torch.nn as nn
 from typing import Tuple, List, Dict
@@ -295,7 +297,7 @@ def demonstrate_end_to_end_system():
     
     # Export to ONNX
     print("\n5. Model Export")
-    onnx_path = "/tmp/optimized_classifier.onnx"
+    onnx_path = os.path.join(tempfile.gettempdir(), "optimized_classifier.onnx")
     system.export_onnx(onnx_path)
     print("   ✓ Model ready for TensorRT conversion")
     
